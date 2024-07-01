@@ -1,0 +1,62 @@
+<div [id]="lists[listIndex].title" class="card">
+    <div class="card-header shadow-sm">
+      <span class="form-control">{{lists[listIndex].title}}</span>
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        @for (task of lists[listIndex].tasks; track task) {
+        <li [id]="'card-' + task.id" class="list-group-item shadow-sm mb-3 bg-white rounded max-width-100">
+          <button (click)="removeTask(task)" class="btn-close position-absolute top-0 end-0 m-1"></button>
+          @if (task.title !== null)
+          {
+            <h5 class="card-title text-break text-center m-1">{{task.title}}</h5>
+          }
+          @if (task.title === null)
+          {
+            <div class="card m-2 col-md-5">
+              <input (keydown.enter)="saveTask(task)" [value]="task.title" [id]="'taskTitle-' + task.id" class="form-control" placeholder="Enter task name">
+            </div>
+          }
+          <div class="card task-description m-2">
+            @if (task.value !== null)
+            {
+              <p class="text-break m-2">{{task.value}}</p>
+            }
+            @if (task.value === null)
+            {
+              <input (keydown.enter)="saveTask(task)" [value]="task.value" [id]="'task-' + task.id" class="form-control" placeholder="Enter task description">
+            }
+          </div>
+          <div class="d-flex justify-content-between mt-2">
+            <div class="col-auto mt-1">
+              @if (0 !== listIndex)
+              {
+                <button (click)="changeTaskState(task, 'backward')" class="btn btn-primary btn-sm mt-2 ms-0">
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+              }
+            </div>
+            @if (task.value === null)
+            {
+              <div class="col-auto text-center">
+                <button (click)="saveTask(task)" class="btn btn-primary mt-2 col-auto text-center" style="width: 80px;">Save</button>
+              </div>
+            }
+            <div class="col-auto mt-1">
+              @if (lists.length !== listIndex + 1)
+              {
+                <button (click)="changeTaskState(task, 'forward')" class="btn btn-primary btn-sm mt-2 me-0">
+                  <i class="fas fa-arrow-right"></i>
+                </button>
+              }
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+      <div>
+        <button (click)="addTask(lists[listIndex].title)" class="btn btn-success mt-2 AddTaskButton">Add Task</button>
+      </div>
+    </div>
+  </div>
+  
