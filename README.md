@@ -1,3 +1,14 @@
+# Project description
+
+The To-Do List project is a web application developed in Angular using TypeScript. It allows users to manage a list of tasks across multiple lists. Users can add, edit, delete, and mark tasks as completed, and move tasks between lists. The application is responsive, has an intuitive user interface, and persists data in the browser's local storage to maintain the state between sessions.
+
+# Features
+
+Add Tasks: Users can add new tasks to specific lists by entering a task title.
+Delete Tasks: Users can delete tasks from the list.
+Change state of tasks
+Persist Application State: The application state (task lists) is stored in the browser's local storage, allowing the task list to persist between user sessions.
+
 # Webapps
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
